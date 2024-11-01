@@ -1,0 +1,66 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <div class="sidebar-sticky pt-3">
+                <h5 class="sidebar-heading">CHỦ ĐỀ SÁCH</h5>
+                <ul class="nav flex-column">
+                    @foreach (var subject in Model.DistinctSubjects)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Subjects/@subject.MaCD">@subject.TenChuDe</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <hr />
+
+            <div class="sidebar-sticky pt-3">
+                <h5 class="sidebar-heading">NHÀ XUẤT BẢN</h5>
+                <ul class="nav flex-column">
+                    @foreach (var subject in Model.DistinctPublishers)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Publishers/@subject.MaNXB">@subject.TenNXB</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <!-- Banner -->
+            <div class="jumbotron mt-4">
+                <h1 class="display-4">Welcome to the Book Store!</h1>
+                <p class="lead">Explore our wide collection of books.</p>
+            </div>
+
+            <!-- Main Content -->
+            <div class="content mt-4">
+                <h4>New books</h4>
+                <div class="row">
+                    @foreach (var book in Model.Books)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <a href="@Url.Action("Detail", "Home", new { id = book.Masach })" style="text-decoration: none; color: inherit;">
+                                <img src="@Url.Content("~/Content/books/" + book.Anhbia)" class="card-img-top" style="width: 100%; height: 300px;" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="card-title text-truncate">@book.Tensach</h5>
+                                    <p class="card-text">Price: @book.Giaban</p>
+                                    <a href="@Url.Action("Detail", "Home", new { id = book.Masach })" class="btn btn-primary">Read More</a>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+        </main>
+    </div>
+</main>
