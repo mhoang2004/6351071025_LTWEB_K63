@@ -1,0 +1,115 @@
+﻿@model IEnumerable<WebApplicationTH.Models.Cart>
+
+@{
+    ViewBag.Title = "DatHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DatHang</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<h4 class="text-center">THÔNG TIN HÀNG HÓA</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.iMasach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sTensach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sAnhbia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dDongia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.iSoluong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dThanhtien)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.iMasach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sTensach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sAnhbia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dDongia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.iSoluong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dThanhtien)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+
+
+
+    }
+
+    <tr class="text-danger">
+        <td>Số lượng sách: <b>@ViewBag.Tongsoluong</b></td>
+
+    </tr>
+
+    <tr class="text-danger">
+        <td>Tổng tiền: <b>@ViewBag.Tongtien</b></td>
+    </tr>
+
+    <tr class="text-danger">
+        <td><b>@Html.ActionLink("Trở về giỏ hàng", "Index")</b></td>
+    </tr>
+
+
+
+</table>
+
+
+<h4 class="text-center mb-4">THÔNG TIN ĐẶT HÀNG</h4>
+
+<div class="d-flex justify-content-center">
+    @using (Html.BeginForm())
+    {
+
+
+         var user = (WebApplicationTH.Models.KHACHHANG)Session["Taikhoan"];
+        <p><b>Họ tên khách hàng:</b> @user.HoTen</p>
+        <p><b>Địa chỉ:</b> @user.DiachiKH</p>
+        <p><b>Điện thoại:</b> @user.DienthoaiKH</p>
+        <p><b>Ngày đặt:</b> @DateTime.Now.ToString("yyyy-MM-dd")</p>
+        <p>
+            <b>Ngày giao hàng:</b>
+            <input type="date" />
+        </p>
+        <div class="text-center">
+            <button type="submit">Đồng ý đặt hàng</button>
+        </div>
+        
+
+    }
+    
+  
+    
+</div>
+

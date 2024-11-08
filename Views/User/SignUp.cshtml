@@ -1,0 +1,141 @@
+﻿@model WebApplicationTH.Models.KHACHHANG
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .form-container {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    .form-register {
+        width: 100%;
+        max-width: 400px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .form-register__title {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .form-register__form {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .form-register__group {
+        margin-bottom: 15px;
+    }
+
+    .form-register__label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    .form-register__input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+        .form-register__input:focus {
+            border-color: #5cb85c;
+            outline: none;
+        }
+
+    .form-register__button {
+        width: 100%;
+        padding: 12px;
+        background-color: #5cb85c;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .form-register__button:hover {
+            background-color: #4cae4c;
+        }
+
+    .text-danger {
+        color: red;
+    }
+</style>
+
+
+<div class="form-container">
+    <div class="form-register">
+        <h2 class="form-register__title">ĐĂNG KÝ THÀNH VIÊN</h2>
+
+        @using (Html.BeginForm())
+        {
+            <div class="form-register__group">
+                <label for="name" class="form-register__label">Họ tên khách hàng</label>
+                @Html.TextBoxFor(m => m.HoTen, new { @class = "form-register__input" })
+                <p class="text-danger">@ViewData["Loi1"]</p>
+            </div>
+
+            <div class="form-register__group">
+                <label for="username" class="form-register__label">Tên đăng nhập</label>
+                @Html.TextBoxFor(m => m.Taikhoan, new { @class = "form-register__input" })
+                <p class="text-danger">@ViewData["Loi2"]</p>
+            </div>
+
+            <div class="form-register__group">
+                <label for="password" class="form-register__label">Mật khẩu</label>
+                @Html.PasswordFor(m => m.Matkhau, new { @class = "form-register__input" })
+                <p class="text-danger">@ViewData["Loi3"]</p>
+            </div>
+
+            <div class="form-register__group">
+                <label for="confirmPassword" class="form-register__label">Mật khẩu nhập lại</label>
+                <input type="password" id="Matkhaunhaplai" name="Matkhaunhaplai" class="form-register__input" required />
+                <p class="text-danger">@ViewData["Loi4"]</p>
+            </div>
+
+            <div class="form-register__group">
+                <label for="email" class="form-register__label">Email</label>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-register__input" })
+                <p class="text-danger">@ViewData["Loi5"]</p>
+            </div>
+
+            <div class="form-register__group">
+                <label for="phone" class="form-register__label">Điện thoại</label>
+                @Html.TextBoxFor(m => m.DienthoaiKH, new { @class = "form-register__input" })
+                <p class="text-danger">@ViewData["Loi6"]</p>
+            </div>
+
+            <div class="form-register__group">
+                <label for="dob" class="form-register__label">Ngày sinh</label>
+                @Html.TextBoxFor(m => m.Ngaysinh, new { @class = "form-register__input", type = "date" })
+                <p class="text-danger">@ViewData["Loi7"]</p>
+            </div>
+
+            <div class="form-register__group">
+                <label for="address" class="form-register__label">Địa chỉ</label>
+                @Html.TextBoxFor(m => m.DiachiKH, new { @class = "form-register__input" })
+                <p class="text-danger">@ViewData["Loi8"]</p>
+            </div>
+
+            <button type="submit" class="form-register__button">Register</button>
+        }
+    </div>
+</div>

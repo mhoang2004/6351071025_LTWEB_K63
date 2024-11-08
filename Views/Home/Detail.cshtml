@@ -80,6 +80,10 @@
 
     </dl>
 </div>
+<div class="mb-4">
+
+    <a class="text-danger" href="@Url.Action("ThemGiohang", "Cart", new { iMasach = @Model.Masach, strURL = "/" })">Đặt mua</a>
+</div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Masach }) |
     @Html.ActionLink("Back to List", "Index")

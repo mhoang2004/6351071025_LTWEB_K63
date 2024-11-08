@@ -1,0 +1,89 @@
+﻿@model IEnumerable<WebApplicationTH.Models.Cart>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Index", "Home")
+</p>
+<table class="table">
+    @if (Model != null && Model.Any())
+    {
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.iMasach)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sTensach)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sAnhbia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dDongia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.iSoluong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dThanhtien)
+            </th>
+            <th></th>
+        </tr>
+
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.iMasach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sTensach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sAnhbia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dDongia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.iSoluong)
+                </td>
+                <td>
+                    <input name="txtSoluong" width="100" value="@item.dThanhtien" />
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.iMasach }) |
+                    @Html.ActionLink("Details", "Detail", "Home", new { id = item.iMasach }, null) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.iMasach })
+                </td>
+            </tr>
+        }
+
+        <tr class="text-danger">
+            <td>Số lượng sách: <b>@ViewBag.Tongsoluong</b></td>
+
+        </tr>
+
+        <tr class="text-danger">
+            <td>Tổng tiền: <b>@ViewBag.Tongtien</b></td>
+        </tr>
+
+        <tr class="text-danger">
+            <td><b>@Html.ActionLink("Xóa Giỏ Hàng", "Clear")</b></td>
+        </tr>
+
+        <tr class="text-danger">
+            <td><b>@Html.ActionLink("Đặt hàng", "DatHang")</b></td>
+        </tr>
+    }
+    else
+    {
+        <tr><td colspan="6">No items in the cart.</td></tr>
+    }
+</table>

@@ -1,0 +1,73 @@
+﻿@model WebApplicationTH.Models.Cart
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Cart</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.iMasach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iMasach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sTensach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sTensach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sAnhbia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sAnhbia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dDongia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dDongia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iSoluong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iSoluong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dThanhtien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dThanhtien)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
