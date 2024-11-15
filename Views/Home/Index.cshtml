@@ -1,7 +1,9 @@
-﻿@model dynamic
+﻿@model WebApplicationTH.Models.HomeViewModel
 
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Home Page";
+
 }
 
 <main>
@@ -61,6 +63,10 @@
                         </div>
                     }
                 </div>
+                <div class="pagination-container">
+                    @Html.PagedListPager(Model.Books, page => Url.Action("Index", new { page }))
+                </div>
+            </div>
         </main>
     </div>
 </main>

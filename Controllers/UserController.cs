@@ -120,7 +120,8 @@ namespace WebApplicationTH.Controllers
 
         public ActionResult LogOut()
         {
-            Session["Taikhoan"] = null;
+            Session["Taikhoan"] = null; 
+            Session["Admin"] = null;
             return RedirectToAction("Index", "Home");
         }
     }

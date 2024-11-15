@@ -21,21 +21,29 @@
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Cart", "Index", "Cart", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    </ul>
-                @if (Session["Taikhoan"] == null)
-                {
-                    <ul class="navbar-nav">
-                        <li>@Html.ActionLink("Sign Up", "SignUp", "User", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Log In", "LogIn", "User", new { area = "" }, new { @class = "nav-link" })</li>
-                    </ul>
-                }
-                else
+                    <li>@Html.ActionLink("Admin", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+                @if (Session["Taikhoan"] != null)
                 {
                     var user = (WebApplicationTH.Models.KHACHHANG)Session["Taikhoan"];
                     <ul class="navbar-nav">
                         <li>@Html.ActionLink($"Hi, {user.HoTen}!", "Index", "User", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Log Out", "LogOut", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                }
+                else if(Session["Admin"] != null)
+                {
+                    var admin = (WebApplicationTH.Models.Admin)Session["Admin"];
+                    <ul class="navbar-nav">
+                        <li>@Html.ActionLink($"Hi, {admin.UserAdmin}!", "Index", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Log Out", "LogOut", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="navbar-nav">
+                        <li>@Html.ActionLink("Sign Up", "SignUp", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Log In", "LogIn", "User", new { area = "" }, new { @class = "nav-link" })</li>
                     </ul>
                 }
             </div>

@@ -1,0 +1,91 @@
+﻿@model PagedList.PagedList<WebApplicationTH.Models.SACH>
+@using PagedList.Mvc;
+@helper Truncate(string input, int lenght)
+{
+    if(input.Length < lenght)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, lenght)<text>...</text>
+    }
+}
+@{
+    ViewBag.Title = "Books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Books</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên sách
+        </th>
+        <th>
+            Giá bán
+        </th>
+        <th>
+            Mô tả
+        </th>
+        <th>
+            Ảnh bìa
+        </th>
+        <th>
+            Ngày cập nhật
+        </th>
+        <th>
+            Số lượng tồn
+        </th>
+        <th>
+            Tên chủ đề
+        </th>
+        <th>
+            Tên NXB
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tensach)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Giaban)
+        </td>
+        <td>
+            @Truncate(item.Mota, 100)
+        </td>
+        <td>
+            <img src="@Url.Content("~/Content/books/" + item.Anhbia)" width="200" alt="Book Cover" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngaycapnhat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soluongton)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CHUDE.TenChuDe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NHAXUATBAN.TenNXB)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Masach }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Masach }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Masach })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div class="pagination-container">
+    @Html.PagedListPager(Model, page => Url.Action("Books", new { page }))
+</div>

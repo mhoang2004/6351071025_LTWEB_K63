@@ -16,7 +16,7 @@
 
     .form-register {
         width: 100%;
-        max-width: 500px;
+        max-width: 400px;
         background-color: #ffffff;
         padding: 20px;
         border-radius: 8px;
@@ -88,7 +88,14 @@
 
 <div class="form-container">
     <div class="form-register">
-        <h2 class="form-register__title">ĐĂNG NHẬP</h2>
+        <h2 class="form-register__title">ĐĂNG NHẬP HỆ THỐNG QUẢN TRỊ</h2>
+        <ul class="text-danger">
+            <li>Lưu ý đây là trang dành cho quản trị viên!</li>
+            <li>
+                Nếu bạn không phải là quản trị viên, quay trở lại trang chủ tại
+                <a href="/">đây</a>.
+            </li>
+        </ul>
 
         @using (Html.BeginForm())
         {
@@ -112,3 +119,5 @@
         }
     </div>
 </div>
+
+

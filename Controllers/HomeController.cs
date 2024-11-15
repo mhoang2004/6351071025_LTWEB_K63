@@ -4,18 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplicationTH.Models;
+using PagedList;
+using System.Web.UI;
 
 namespace WebApplicationTH.Controllers
 {
     public class HomeController : Controller
     {
         private QLBansachEntities db = new QLBansachEntities();
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            int pageSize = 5;
+            int pageNum = page ?? 1;
+            
             var books = db.SACHes
                   .OrderByDescending(b => b.Ngaycapnhat)
-                  .Take(5)
-                  .ToList();
+                  .ToPagedList(pageNum, pageSize);
 
             var distinctSubjects = db.CHUDEs.Select(cd => cd).Distinct().ToList();
 
@@ -42,7 +46,7 @@ namespace WebApplicationTH.Controllers
             return View(book); // Assuming you have a corresponding Detail view for displaying the book details
         }
 
-        public ActionResult Subjects(int id)
+        public ActionResult Subjects(int id, int? page)
         {
             // Retrieve the subject based on the provided id
             var subject = db.CHUDEs.Find(id);
@@ -52,7 +56,9 @@ namespace WebApplicationTH.Controllers
             }
 
             // Retrieve all books with the same subject id (MaCD)
-            var books = db.SACHes.Where(b => b.MaCD == id).ToList();
+            int pageSize = 5;
+            int pageNum = page ?? 1;  
+            var books = db.SACHes.Where(b => b.MaCD == id).ToPagedList(pageNum, pageSize);
 
 
             var distinctSubjects = db.CHUDEs.Select(cd => cd).Distinct().ToList();
@@ -69,7 +75,7 @@ namespace WebApplicationTH.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Publishers(int id)
+        public ActionResult Publishers(int id, int? page)
         {
             // Retrieve the subject based on the provided id
             var subject = db.NHAXUATBANs.Find(id);
@@ -79,8 +85,9 @@ namespace WebApplicationTH.Controllers
             }
 
             // Retrieve all books with the same subject id (MaCD)
-            var books = db.SACHes.Where(b => b.MaNXB == id).ToList();
-
+            int pageSize = 5;
+            int pageNum = page ?? 1;
+            var books = db.SACHes.Where(b => b.MaNXB == id).ToPagedList(pageNum, pageSize);
 
             var distinctSubjects = db.CHUDEs.Select(cd => cd).Distinct().ToList();
 

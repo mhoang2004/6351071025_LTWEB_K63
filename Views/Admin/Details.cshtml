@@ -1,0 +1,83 @@
+﻿@model WebApplicationTH.Models.SACH
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SACH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tensach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tensach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Giaban)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giaban)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anhbia)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/Content/books/" + Model.Anhbia)" width="200" alt="Book Cover" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaycapnhat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaycapnhat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soluongton)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluongton)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CHUDE.TenChuDe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CHUDE.TenChuDe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NHAXUATBAN.TenNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHAXUATBAN.TenNXB)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Masach }) |
+    @Html.ActionLink("Back to List", "Books")
+</p>

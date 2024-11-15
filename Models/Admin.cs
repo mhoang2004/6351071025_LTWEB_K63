@@ -7,3 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+namespace WebApplicationTH.Models
+{
+    public class Admin
+    {
+        public string UserAdmin { get; set; } // Maps to the primary key
+        public string PassAdmin { get; set; }
+        public string Hoten { get; set; }
+    }
+}

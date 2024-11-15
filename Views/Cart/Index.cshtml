@@ -65,17 +65,17 @@
             </tr>
         }
 
-        <tr class="text-danger">
+        <tr>
             <td>Số lượng sách: <b>@ViewBag.Tongsoluong</b></td>
 
         </tr>
 
-        <tr class="text-danger">
+        <tr>
             <td>Tổng tiền: <b>@ViewBag.Tongtien</b></td>
         </tr>
 
         <tr class="text-danger">
-            <td><b>@Html.ActionLink("Xóa Giỏ Hàng", "Clear")</b></td>
+            <td><b>@Html.ActionLink("Xóa Giỏ Hàng", "Clear", null, new { @class = "text-danger" })</b></td>
         </tr>
 
         <tr class="text-danger">
